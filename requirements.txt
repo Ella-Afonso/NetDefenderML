@@ -1,8 +1,16 @@
 python-dotenv
 pandas
 numpy
-pytest 
+pymongo
+pytest
 pytest-cov
-pylint
 black
-ipython 
+pylint
+mypy
+bandit
+safety
+ipython
+pymongo
+certifi
+
+## -e .
