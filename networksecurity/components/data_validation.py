@@ -15,7 +15,7 @@ class DataValidation:
         try:
             self.data_ingestion_artifact=data_ingestion_artifact
             self.data_validation_config=data_validation_config
-            self.schema_config = read_yaml_file(SCHEMA_FILE_PATH)
+            self._schema_config = read_yaml_file(SCHEMA_FILE_PATH)
 
         except Exception as e:
             raise NetworkSecurityException(e,sys)
@@ -30,7 +30,7 @@ class DataValidation:
 
     def validate_number_of_columns(self,dataframe:pd.DataFrame)->bool:
         try:
-            number_of_columns=len(self.schema_config)
+            number_of_columns=len(self._schema_config)
             logging.info(f"Required number of columns:{number_of_columns}")
             logging.info(f"DataFrame has columns:{len(dataframe.columns)}")
             if len(dataframe.columns)==number_of_columns: 
@@ -63,7 +63,7 @@ class DataValidation:
             #Create Directory
             dir_path = os.path.dirname(drift_report_file_path)
             os.makedirs(dir_path,exist_ok=True)    
-            write_yaml_file(file_path=drift_report_file_path, content=report)
+            write_yaml_file(file_path=drift_report_file_path, content=report, replace=True)
 
         except Exception as e:
             raise NetworkSecurityException(e,sys)

@@ -22,4 +22,4 @@ def write_yaml_file(file_path: str, content: object, replace: bool = False) -> N
             with open(file_path, "w") as file:
                 yaml.dump(content, file)
     except Exception as e:
-        raise NetworkSecurityException(e,sys)                                
+        raise NetworkSecurityException(e,sys)
